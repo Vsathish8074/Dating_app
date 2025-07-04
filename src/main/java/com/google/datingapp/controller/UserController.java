@@ -1,7 +1,7 @@
 package com.google.datingapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.datingapp.entity.User;
-import com.google.datingapp.service.ResponceEntity;
+
 import com.google.datingapp.service.UserService;
 
 @RestController
@@ -24,7 +24,7 @@ public class UserController {
 		
 		return  userservice.saveUser(user);
 	}
-	
+		
 	@GetMapping("/users/gender/male")
 	public ResponseEntity<?> findAllMaleUsers(){
 		
@@ -43,5 +43,17 @@ public class UserController {
 		return userservice.findBestMatch(id,top);
 		
 	}
+	@GetMapping("/user/search/name/{letters}")
+	public ResponseEntity<?> searchByName(@PathVariable String letters){
+	 
+	return userservice.searchByName(letters);
+	}
 	
-}
+	@GetMapping("/user/search/email/{letters}")
+	public ResponseEntity<?> searchByEmail(@PathVariable String letters){
+	 
+	return userservice.searchByEmail(letters);
+	}
+	}
+	
+
